@@ -18,8 +18,8 @@
   ],
   "scripts": {
     "build": "tsc",
-    "prepublishOnly": "npm run build && node --test dist",
-    "test": "npm run build && node --test dist"
+    "prepublishOnly": "npm run build && node --test \"dist/**/*.test.js\"",
+    "test": "npm run build && node --test \"dist/**/*.test.js\""
   },
   "keywords": [
     "regex",
