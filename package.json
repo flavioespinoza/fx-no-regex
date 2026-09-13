@@ -12,10 +12,13 @@
     }
   },
   "files": [
-    "dist"
+    "dist/index.js",
+    "dist/index.d.ts",
+    "dist/modules"
   ],
   "scripts": {
     "build": "tsc",
+    "prepublishOnly": "npm run build && node --test dist",
     "test": "npm run build && node --test dist"
   },
   "keywords": [
@@ -25,7 +28,16 @@
     "typescript",
     "esm"
   ],
+  "author": "Flavio Espinoza",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/flavioespinoza/fx-no-regex.git"
+  },
+  "homepage": "https://github.com/flavioespinoza/fx-no-regex#readme",
+  "bugs": {
+    "url": "https://github.com/flavioespinoza/fx-no-regex/issues"
+  },
   "devDependencies": {
     "typescript": "^5.6.0",
     "@types/node": "^22.0.0"
