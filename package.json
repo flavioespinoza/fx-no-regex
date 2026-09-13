@@ -1,0 +1,36 @@
+{
+  "name": "fx-no-regex",
+  "version": "1.0.0",
+  "description": "String utilities that replace common regex patterns with plain string operations",
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "build": "tsc",
+    "test": "npm run build && node --test dist"
+  },
+  "keywords": [
+    "regex",
+    "no-regex",
+    "string",
+    "typescript",
+    "esm"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^5.6.0",
+    "@types/node": "^22.0.0"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
