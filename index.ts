@@ -9,5 +9,10 @@ export {
   removeDigits,
   splitCamelCase,
   isAlphanumeric,
-  sanitizeFilename
+  sanitizeFilename,
+  stripHtmlTags,
+  snakeToCamel,
+  countWords,
+  stripSurroundingQuotes,
+  looksLikeEmail
 } from "./modules/index.js"

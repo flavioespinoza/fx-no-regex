@@ -11,7 +11,12 @@ import {
   removeDigits,
   splitCamelCase,
   isAlphanumeric,
-  sanitizeFilename
+  sanitizeFilename,
+  stripHtmlTags,
+  snakeToCamel,
+  countWords,
+  stripSurroundingQuotes,
+  looksLikeEmail
 } from "../index.js"
 
 test("removeWhitespace strips every space, tab, and newline", () => {
@@ -61,4 +66,30 @@ test("isAlphanumeric rejects punctuation and spaces", () => {
 
 test("sanitizeFilename fixes a leading space, a doubled period, and a date placeholder", () => {
   assert.equal(sanitizeFilename(" Test-problem..{date}.png", "2026-09-13"), "Test-problem.2026-09-13.png")
+})
+
+test("stripHtmlTags removes tags and keeps the text between them", () => {
+  assert.equal(stripHtmlTags("<p>hello <b>world</b></p>"), "hello world")
+})
+
+test("snakeToCamel converts underscores to camel humps", () => {
+  assert.equal(snakeToCamel("user_profile_id"), "userProfileId")
+  assert.equal(snakeToCamel("already"), "already")
+})
+
+test("countWords counts runs of non-whitespace characters", () => {
+  assert.equal(countWords("the quick  brown\tfox\njumps"), 5)
+  assert.equal(countWords("   "), 0)
+})
+
+test("stripSurroundingQuotes removes one matching pair only", () => {
+  assert.equal(stripSurroundingQuotes("\"hello\""), "hello")
+  assert.equal(stripSurroundingQuotes("'hello'"), "hello")
+  assert.equal(stripSurroundingQuotes("\"mismatched'"), "\"mismatched'")
+  assert.equal(stripSurroundingQuotes("no quotes"), "no quotes")
+})
+
+test("looksLikeEmail checks the loose shape, not full RFC 5322", () => {
+  assert.equal(looksLikeEmail("flavio.espinoza@gmail.com"), true)
+  assert.equal(looksLikeEmail("not-an-email"), false)
 })
